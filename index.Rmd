@@ -8,6 +8,10 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+##Computational Biology work
 
+Found here are links related to in class assignments completed during the Spring 2024 semester.
 
-This is the link for assignment 1: [Link](Homework_02.html)   
+Assignment 1: [24_1_2024](Homework_02.html)   
+
+\-\hspace{2cm} This first assignment was to understand how to create and add webpages using a Github Repository.
