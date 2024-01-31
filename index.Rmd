@@ -10,6 +10,9 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 ##### Found here are links related to in class assignments completed during the Spring 2024 semester.
 
-- Assignment 1: [24_1_2024](Homework_02.html)   
+Assignment 1: [24_Jan_2024](Homework_02.html)   
 
-\-\hspace{2cm} This first assignment was to understand how to create and add webpages using a Github Repository.
+     This first assignment was to understand how to create and add webpages using a Github Repository.
+
+
+Assignment 2: [31_Jan_2024](Homework_03.html)

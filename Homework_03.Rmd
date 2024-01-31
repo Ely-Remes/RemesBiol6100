@@ -1,0 +1,136 @@
+---
+title: "Biol6100 Assignment 3"
+author: "Ely P. Remes"
+date: "2024-01-31"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# RegEx expressions
+
+
+
+## Exercise 1
+
+Given:
+```
+First String    Second      1.22      3.4
+Second          More Text   1.555555  2.2220
+Third           x           3         124
+```
+
+Goal: Set data up for a .csv format
+
+
+Search:`\s{2,}`         replace: .
+
+Result: 
+
+
+```
+First String,Second,1.22,3.4
+Second,More Text,1.555555,2.2220
+Third,x,3,124
+```
+
+## Exercise 2
+Given: 
+```
+Ballif, Bryan, University of Vermont
+Ellison, Aaron, Harvard Forest
+Record, Sydne, Bryn Mawr
+```
+
+Goal: Remove commas and add parenthesis around the university names.
+
+
+Search: `(\w*), (\w*),(\s.*)`
+Each parenthesis is 
+Replace: `\2 \1 (\3)`
+
+## Exercise 3
+Given:
+```0001 Georgia Horseshoe.mp3 0002 Billy In The Lowground.mp3 0003 Winder Slide.mp3 0004 Walking Cane.mp3```
+
+
+Goal: Create a row for each .mp3 file
+
+
+Search: `.mp3\s`        Replace: `.mp3\n`
+
+Result:
+```
+0001 Georgia Horseshoe.mp3
+0002 Billy In The Lowground.mp3
+0003 Winder Slide.mp3
+0004 Walking Cane.mp3
+```
+## Exercise 4
+Given: List created from exercise 3
+
+
+Goal: Change to format Song title_number.mp3
+
+
+Search: `(\d*) (.*).mp3)`        Replace `\2_\1.mp3`
+
+Result:
+
+```
+Georgia Horseshoe_0001.mp3
+Billy In The Lowground_0002.mp3
+Winder Slide_0003.mp3
+Walking Cane_0004.mp3
+```
+## Exercise 5
+Given: 
+
+```
+Camponotus,pennsylvanicus,10.2,44
+Camponotus,herculeanus,10.5,3
+Myrmica,punctiventris,12.2,4
+Lasius,neoniger,3.3,55
+```
+
+Goal: Keep the first letter of the first word and the last number in the series.
+
+
+Search:`(\w)\w+,(\w*),(\d*\.\d),(\d*)`        Replace `\1_\2,\4`
+
+
+Results
+```
+C_pennsylvanicus,44
+C_herculeanus,3
+M_punctiventris,4
+L_neoniger,55
+```
+
+## Exercise 6
+
+Given:
+
+Data set from exercise 5
+
+
+Goal: Place data into this form `C_penn,44`
+
+
+Search: `(\w)\w+,(\w{4})\w+,(\d*\.\d),(\d*)`        Replace `\1_\2,\4`
+
+
+## Exercise 7
+
+Given:
+
+Data set from exercise 5
+
+
+Goal: Place data into a fuse between the first three letters of each word and a flip of the numbers. eample:`Campen, 44, 10.2`
+
+
+Search: `(\w{3})\w+,(\w{3})\w+,(\d*\.\d),(\d*)`       Replace `\1\2, \4, \3`
