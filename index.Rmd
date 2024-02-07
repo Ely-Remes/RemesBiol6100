@@ -20,5 +20,8 @@ Assignment 1: [24_Jan_2024](Homework_02.html)
 Assignment 2: [31_Jan_2024](Homework_03.html)
 
     The aim of the assignment was to gain practice working with regular expressions to manipulate untidy data into a consistent form.
-    
-  
+
+
+Assignment 3: [7_Feb_2024](Homework_04.html)
+
+    Here work was done to gain experience working with atomic vectors and different ways to manipulate them.

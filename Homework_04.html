@@ -11,9 +11,9 @@
 
 <meta name="author" content="Ely P. Remes" />
 
-<meta name="date" content="2024-01-24" />
+<meta name="date" content="2024-02-07" />
 
-<title>Computational Biology Projects</title>
+<title>Homework_04</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -350,23 +350,111 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">Computational Biology Projects</h1>
+<h1 class="title toc-ignore">Homework_04</h1>
 <h4 class="author">Ely P. Remes</h4>
-<h4 class="date">2024-01-24</h4>
+<h4 class="date">2024-02-07</h4>
 
 </div>
 
 
-<div id="found-here-are-links-related-to-in-class-assignments-completed-during-the-spring-2024-semester." class="section level5">
-<h5>Found here are links related to in class assignments completed
-during the Spring 2024 semester.</h5>
-<p>Assignment 1: <a href="Homework_02.html">24_Jan_2024</a></p>
-<pre><code> This first assignment was to understand how to create and add webpages using a Github Repository.</code></pre>
-<p>Assignment 2: <a href="Homework_03.html">31_Jan_2024</a></p>
-<pre><code>The aim of the assignment was to gain practice working with regular expressions to manipulate untidy data into a consistent form.</code></pre>
-<p>Assignment 3: <a href="Homework_04.html">7_Feb_2024</a></p>
-<pre><code>Here work was done to gain experience working with atomic vectors and different ways to manipulate them.</code></pre>
-</div>
+<p>Suppose x = 1.1, a = 2.2, and b = 3.3. Assign each expression to the
+value of the variable z and print the value stored in z.</p>
+<p>x<sup>a</sup>b</p>
+<p>(x<sup>a)</sup>b</p>
+<p>3x^3 + 2x^2 +1</p>
+<pre class="r"><code>x &lt;- 1.1
+a &lt;- 2.2
+b &lt;- 3.3
+
+
+z &lt;- (x^(a^b)) 
+
+print(z)</code></pre>
+<pre><code>## [1] 3.61714</code></pre>
+<pre class="r"><code>z &lt;- ((x^a)^b)
+
+print(z)</code></pre>
+<pre><code>## [1] 1.997611</code></pre>
+<pre class="r"><code>z &lt;- (3*x^3+2*x^2+1)
+
+print (z)</code></pre>
+<pre><code>## [1] 7.413</code></pre>
+<p>Using the rep and seq functions, create the following vectors:</p>
+<p>(1,2,3,4,5,6,7,8,7,6,5,4,3,2,1) (1,2,2,3,3,3,4,4,4,4,5,5,5,5,5)
+(5,4,4,3,3,3,2,2,2,2,1,1,1,1,1)</p>
+<pre class="r"><code>y&lt;- seq(from = 1, to = 8, by = 1)
+a &lt;-seq(from = 7, to = 1, by = -1)
+z &lt;- c(y,a)
+
+print(z)</code></pre>
+<pre><code>##  [1] 1 2 3 4 5 6 7 8 7 6 5 4 3 2 1</code></pre>
+<pre class="r"><code>y &lt;- seq(1:5)
+
+d &lt;- rep(y , time=y)
+
+print(d)</code></pre>
+<pre><code>##  [1] 1 2 2 3 3 3 4 4 4 4 5 5 5 5 5</code></pre>
+<pre class="r"><code>d &lt;- rep(rev(y) , time=y)
+
+print (d)</code></pre>
+<pre><code>##  [1] 5 4 4 3 3 3 2 2 2 2 1 1 1 1 1</code></pre>
+<p>Create a vector of two random uniform numbers. In a spatial map,
+these can be interpreted as x and y coordinates that give the location
+of an individual (such as a marked forest tree in a plot that has been
+mapped). Using one of R’s inverse trigonometry functions (asin(),
+acos(), or atan()), convert these numbers into polar coordinates</p>
+<pre class="r"><code>x &lt;- 5 #Set x coordinate
+y &lt;- 105 #Set y coordinate
+Cartesian &lt;- c(x,y)
+
+print(Cartesian)</code></pre>
+<pre><code>## [1]   5 105</code></pre>
+<pre class="r"><code>r &lt;- sqrt((x^2) +(y^2)) # Find r
+Theta &lt;- acos(x/r)
+
+Polar &lt;- c(r,Theta)
+
+
+print(Polar)</code></pre>
+<pre><code>## [1] 105.118980   1.523213</code></pre>
+<p>Create a vector queue &lt;- c(“sheep”, “fox”, “owl”, “ant”) where
+queue represents the animals that are lined up to enter Noah’s Ark, with
+the sheep at the front of the line. Using R expressions, update queue
+as:</p>
+<p>the serpent arrives and gets in line; the sheep enters the ark; the
+donkey arrives and talks his way to the front of the line; the serpent
+gets impatient and leaves; the owl gets bored and leaves; the aphid
+arrives and the ant invites him to cut in line. Finally, determine the
+position of the aphid in the line.</p>
+<pre class="r"><code>queue &lt;- c(&quot;sheep&quot;, &quot;fox&quot;, &quot;owl&quot;, &quot;ant&quot;)
+print(queue)</code></pre>
+<pre><code>## [1] &quot;sheep&quot; &quot;fox&quot;   &quot;owl&quot;   &quot;ant&quot;</code></pre>
+<pre class="r"><code>queue &lt;- c(queue, &quot;serpent&quot;)
+print(queue)</code></pre>
+<pre><code>## [1] &quot;sheep&quot;   &quot;fox&quot;     &quot;owl&quot;     &quot;ant&quot;     &quot;serpent&quot;</code></pre>
+<pre class="r"><code>queue &lt;- c(queue[2:5])
+print(queue)</code></pre>
+<pre><code>## [1] &quot;fox&quot;     &quot;owl&quot;     &quot;ant&quot;     &quot;serpent&quot;</code></pre>
+<pre class="r"><code>queue &lt;- c(&quot;donkey&quot;, queue [1:4])
+print(queue)</code></pre>
+<pre><code>## [1] &quot;donkey&quot;  &quot;fox&quot;     &quot;owl&quot;     &quot;ant&quot;     &quot;serpent&quot;</code></pre>
+<pre class="r"><code>queue &lt;- c(queue [1:4])
+print(queue)</code></pre>
+<pre><code>## [1] &quot;donkey&quot; &quot;fox&quot;    &quot;owl&quot;    &quot;ant&quot;</code></pre>
+<pre class="r"><code>queue &lt;- c(queue [1:2], queue [4])
+queue &lt;- c(queue[1:2], &quot;aphid&quot;, queue [3])
+print(queue)</code></pre>
+<pre><code>## [1] &quot;donkey&quot; &quot;fox&quot;    &quot;aphid&quot;  &quot;ant&quot;</code></pre>
+<pre class="r"><code>print (which( &quot;aphid&quot; == queue))</code></pre>
+<pre><code>## [1] 3</code></pre>
+<p>Use R to create a vector of all of the integers from 1 to 100 that
+are not divisible by 2, 3, or 7.</p>
+<pre class="r"><code>a &lt;- 1:100
+
+b &lt;- which((a%%2!=0) &amp; (a%%3!=0) &amp; (a%%7!=0))
+print(b)</code></pre>
+<pre><code>##  [1]  1  5 11 13 17 19 23 25 29 31 37 41 43 47 53 55 59 61 65 67 71 73 79 83 85
+## [26] 89 95 97</code></pre>
 
 
 
