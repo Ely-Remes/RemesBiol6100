@@ -11,9 +11,9 @@
 
 <meta name="author" content="Ely P. Remes" />
 
-<meta name="date" content="2024-01-24" />
+<meta name="date" content="2024-02-14" />
 
-<title>Computational Biology Projects</title>
+<title>Homework_05</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -350,25 +350,161 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">Computational Biology Projects</h1>
+<h1 class="title toc-ignore">Homework_05</h1>
 <h4 class="author">Ely P. Remes</h4>
-<h4 class="date">2024-01-24</h4>
+<h4 class="date">2024-02-14</h4>
 
 </div>
 
 
-<div id="found-here-are-links-related-to-in-class-assignments-completed-during-the-spring-2024-semester." class="section level5">
-<h5>Found here are links related to in class assignments completed
-during the Spring 2024 semester.</h5>
-<p>Assignment 1: <a href="Homework_02.html">24_Jan_2024</a></p>
-<pre><code> This first assignment was to understand how to create and add webpages using a Github Repository.</code></pre>
-<p>Assignment 2: <a href="Homework_03.html">31_Jan_2024</a></p>
-<pre><code>The aim of the assignment was to gain practice working with regular expressions to manipulate untidy data into a consistent form.</code></pre>
-<p>Assignment 3: <a href="Homework_04.html">7_Feb_2024</a></p>
-<pre><code>Here work was done to gain experience working with atomic vectors and different ways to manipulate them.</code></pre>
-<p>Assignment 4: <a href="Homework_05.html">14_Feb_2024</a> Work was
-done to understand how to manipulate data frames and matrices.</p>
-<pre><code> Work was Performed to better understand how to manipulate data frames and matrices.</code></pre>
+<div id="question-1" class="section level3">
+<h3>Question 1:</h3>
+<pre class="r"><code>#Assign to the variable n_dims a single random integer between 3 and 10.
+n_dims &lt;- as.integer(runif(1, min=3,max=10))
+
+#Create a vector of consecutive integers from 1 to n_dims2.
+New_Vec &lt;- (1:(n_dims)^2)
+
+# Use the sample function to randomly reshuffle these values.
+New_Vec &lt;- sample(New_Vec)
+
+# create a square matrix with these elements and print
+New_Matrix &lt;- matrix(New_Vec, ncol = n_dims)
+print(New_Matrix)</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8]
+## [1,]   48    6   22   63   52    3   60   11
+## [2,]   64   36   41   61   62   10   57   56
+## [3,]   42   50   32   45   20   16   14    5
+## [4,]    9   58   46   30   44   26   43   53
+## [5,]    7   40   23   35   37   29   12    8
+## [6,]   17   24   27   31    1   51   34   55
+## [7,]   21   28   25   49   15   33   59    2
+## [8,]   38    4   13   19   18   47   39   54</code></pre>
+<pre class="r"><code>#Find a function in r to transpose the matrix and print
+T_Matrix &lt;- t(New_Matrix)
+print(T_Matrix)</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8]
+## [1,]   48   64   42    9    7   17   21   38
+## [2,]    6   36   50   58   40   24   28    4
+## [3,]   22   41   32   46   23   27   25   13
+## [4,]   63   61   45   30   35   31   49   19
+## [5,]   52   62   20   44   37    1   15   18
+## [6,]    3   10   16   26   29   51   33   47
+## [7,]   60   57   14   43   12   34   59   39
+## [8,]   11   56    5   53    8   55    2   54</code></pre>
+<pre class="r"><code>#calculate the sum and the mean of the elements in the first row and then the last row.
+print(sum(T_Matrix[1,]))</code></pre>
+<pre><code>## [1] 246</code></pre>
+<pre class="r"><code>print(mean(T_Matrix[1,]))</code></pre>
+<pre><code>## [1] 30.75</code></pre>
+<pre class="r"><code>print(sum(T_Matrix[row = n_dims,]))</code></pre>
+<pre><code>## [1] 244</code></pre>
+<pre class="r"><code>print(mean(T_Matrix[row=n_dims,]))</code></pre>
+<pre><code>## [1] 30.5</code></pre>
+<pre class="r"><code>#read about the eigen() function and use it on your matrix. Figure out the type of values.
+eigen_T &lt;- eigen(T_Matrix)
+
+print(typeof(eigen_T$values[1]))</code></pre>
+<pre><code>## [1] &quot;complex&quot;</code></pre>
+<pre class="r"><code>print(typeof(eigen_T$vectors[1,1]))</code></pre>
+<pre><code>## [1] &quot;complex&quot;</code></pre>
+</div>
+<div id="question-2" class="section level3">
+<h3>Question 2</h3>
+<p>Create a list with the following named elements</p>
+<pre class="r"><code>#my_matrix, which is a 4 x 4 matrix filled with random uniform values
+my_matrix &lt;- matrix(runif(16),nrow=4)
+
+#my_logical which is a 100-element vector of TRUE or FALSE values. Do this efficiently by setting up a vector of random values and then applying an inequality to it.
+my_logical&lt;- runif(100)&gt;.5 
+
+#my_letters, which is a 26-element vector of all the lower-case letters in random order.
+my_letters&lt;- sample(letters) 
+
+#Create a new list, which has the element[2,2] from the matrix, the second element of the logical vector, and the second element of the letters vector.
+new_list &lt;- list(my_matrix[2,2], my_logical[2], my_letters[2])
+
+#Confirm underlying data types
+typeof(new_list)</code></pre>
+<pre><code>## [1] &quot;list&quot;</code></pre>
+<pre class="r"><code>print(typeof(new_list[[1]]))</code></pre>
+<pre><code>## [1] &quot;double&quot;</code></pre>
+<pre class="r"><code>print(typeof(new_list[[2]]))</code></pre>
+<pre><code>## [1] &quot;logical&quot;</code></pre>
+<pre class="r"><code>print(typeof(new_list[[3]]))</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<pre class="r"><code>#Combine the list and determine vector type 
+new_vector &lt;- c(new_list[[1]], new_list[[2]], new_list[[3]])
+print(typeof(new_vector))</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+</div>
+<div id="question-3" class="section level3">
+<h3>Question 3</h3>
+<p>Create a data frame with the two variables (= columns) and 26 cases
+(= rows) below:</p>
+<pre class="r"><code>#call the first variable my_unis and fill it with 26 random uniform values from 0 to 10
+my_unis &lt;-runif(26, min=0, max=10)
+
+# call the second variable my_letters and fill it with 26 capital letters in random order
+my_letters &lt;- sample(LETTERS)
+
+
+my_df &lt;- data.frame(my_unis, my_letters)
+
+
+
+
+
+#For the first variable, use a single line of code in R to select 4 random rows and replace the numerical values in those rows with NA
+my_df[sample(1:26,4), 1]&lt;-NA
+
+# For the first variable, write a single line of R code to identify which rows have the missing values.
+print(my_df[is.na(my_df$my_unis), ])</code></pre>
+<pre><code>##    my_unis my_letters
+## 1       NA          R
+## 10      NA          M
+## 11      NA          X
+## 17      NA          Z</code></pre>
+<pre class="r"><code>#re-order the entire data frame to arrange the second variable in alphabetical order
+my_df[order(my_df$my_letters), ]</code></pre>
+<pre><code>##     my_unis my_letters
+## 16 8.439341          A
+## 21 8.726806          B
+## 14 5.010916          C
+## 20 9.585449          D
+## 4  7.703134          E
+## 2  7.672912          F
+## 8  1.181397          G
+## 18 4.998003          H
+## 5  1.637224          I
+## 7  4.569551          J
+## 26 8.226695          K
+## 19 4.430863          L
+## 10       NA          M
+## 15 6.804063          N
+## 12 3.553432          O
+## 25 5.500267          P
+## 3  4.524800          Q
+## 1        NA          R
+## 6  7.681998          S
+## 23 1.991878          T
+## 22 6.492096          U
+## 9  3.155066          V
+## 24 6.716163          W
+## 11       NA          X
+## 13 3.480109          Y
+## 17       NA          Z</code></pre>
+<pre class="r"><code>#Calculate the column mean for the first variable.
+print(mean(my_df$my_unis, na.rm=TRUE))</code></pre>
+<pre><code>## [1] 5.549189</code></pre>
+<pre class="r"><code># if(my_df$my_letters== sample(LETTERS, 4))
+  # {
+  # my_df$my_unis&lt;-NA
+# }
+  
+  # replace(my_df$my_unis, NA)
+
+# sample(my_df$my_unis, 4)</code></pre>
 </div>
 
 
