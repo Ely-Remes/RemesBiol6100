@@ -1,0 +1,51 @@
+---
+title: "Homework_07"
+author: "Ely P. Remes"
+date: "2024-02-28"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+## Experimental Design comparing soil moisture between drought and ambient conditions within a greenhouse.
+
+#### Sampling
+  Sampling of soil moisture was taken for 120 different plots experiencing either drought conditions or ambient soil conditions equating to sixty measurements of both conditions. The mean and variance were defined using the raw data provided i n[this dataset](Li_Soil_Dataset.csv) 
+```{r}
+library(ggplot2)
+nName<- c("Ambient","Drought")
+nSize <- c(30,30)
+nMean <- c(0.103697, 0.03247) #Determined from soil dataset.
+
+nSD<- c(.1565, 0.000656)
+
+ID <- 1:(sum(nSize))
+
+SoilMoisture <- c(rnorm(n=nSize[1], mean=nMean[1],sd=nSD[1]), 
+                  rnorm(n=nSize[1], mean=nMean[2], sd=nSD[2]))
+TGroup <- c(rep(nName[1], 60), rep(nName[2], 60))
+ANOdata <-data.frame(ID,TGroup, SoilMoisture)
+
+```
+
+#### Analysis of Data
+Following this, an ANOVA was run to determine the significance i ndifference between the two averages. It was determined that there was a statistically significant difference between the moisture contents of the two soil conditions (p=5.538291x10^-71).
+```{r, echo=FALSE}
+AnoModel<- aov(SoilMoisture~TGroup, data=ANOdata)
+z<-summary(AnoModel)
+aggregate(SoilMoisture~TGroup,data=ANOdata,FUN=mean)
+ANOsum <- list(Fval=unlist(z)[7],probF=unlist(z)[9])
+print(ANOsum)
+
+
+```
+#### Visualization of Data
+A histogram was chosen to illustrate the data and as seen, there is an incredible difference in soil moisture between the drought conditions and ambient conditions.
+```{r, echo=FALSE}
+ANOPlot <- ggplot(data=ANOdata,
+                  aes(x=TGroup,y=SoilMoisture,fill=TGroup)) +
+  geom_boxplot()
+print(ANOPlot)
+
+```

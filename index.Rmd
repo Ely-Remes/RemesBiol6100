@@ -28,6 +28,17 @@ Assignment 3: [7_Feb_2024](Homework_04.html)
     
     
 Assignment 4: [14_Feb_2024](Homework_05.html)
-    Work was done to understand how to manipulate data frames and matrices. 
+
 
      Work was Performed to better understand how to manipulate data frames and matrices.
+
+
+Assignment 5: [21_Feb_2024](Homework_06.html)
+    
+    
+    The object of this assignment was to better understand how to analyze data using tools created in R.  
+    
+    
+Assignment 6: [28_Feb_2024](Homework_07.html)
+
+    Creation and analysis of data derived from a given dataset. The other option here was to use data from one own's lab. Unfortunately, I have none.
