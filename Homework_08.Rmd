@@ -6,7 +6,7 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
 ```
 
 ```{r}
@@ -22,6 +22,7 @@ print(head(iris))
 ```
 
 #### Question 2
+Create a new data frame iris1 that contains only the species virginica and versicolor with sepal lengths longer than 6 cm and sepal widths longer than 2.5 cm. How many observations and variables are in the data set?
 ```{r}
 iris1<-  filter(iris,Sepal.Length>6,Sepal.Width>2.5) %>%
   filter(Species %in% c("virginica", "versicolor"))
