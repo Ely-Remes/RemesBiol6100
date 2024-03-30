@@ -30,7 +30,7 @@ ANOdata <-data.frame(ID,TGroup, SoilMoisture)
 ```
 
 #### Analysis of Data
-Following this, an ANOVA was run to determine the significance i ndifference between the two averages. It was determined that there was a statistically significant difference between the moisture contents of the two soil conditions (p=5.538291x10^-71).
+Following this, an ANOVA was run to determine the significanct difference between the two averages. It was determined that there was a statistically significant difference between the moisture contents of the two soil conditions (p=5.538291x10^-71).
 ```{r, echo=FALSE}
 AnoModel<- aov(SoilMoisture~TGroup, data=ANOdata)
 z<-summary(AnoModel)

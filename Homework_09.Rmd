@@ -1,0 +1,49 @@
+---
+title: "Homeork_09"
+author: "Ely P. Remes"
+date: "2024-03-27"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+source("Homework_09Functions.R")
+
+#Set global variables
+nName<- c("Ambient","Drought","Lush") #Names of treatments
+nSize <- c(30,30, 65)
+nMean <- c(0.103697, 0.03247, 0.2344)
+nSD <-c(0.0565, 0.00656, 0.13)
+
+```
+### Run the analysis
+
+
+  Each run of the code generates a random data set using the "FakeDataGeneration" function and follows a normal distribution. 
+
+```{r}
+DataSet<-FakeDataGeneration()
+
+print(head(DataSet))
+print(AnoStats(DataSet))
+```
+
+
+### Modify the analysis
+
+
+  Alongside this, the code provides the ability to adjust sample size, means, standard deviations, and treatment numbers at will.
+  
+```{r}
+nName<- c("Ambient", "Drought", "Lush", "Arid")
+nMean<- c(0.1037,0.0325,0.2344, 0.0766)
+nSD<- c(0.0565, 0.00656, 0.023, 0.00876)
+nSize<-c(50,50,50,50)
+
+Dataset<-FakeDataGeneration()
+print(head(Dataset))
+print(AnoStats(Dataset))
+```
