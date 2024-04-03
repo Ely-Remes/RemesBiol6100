@@ -3,16 +3,13 @@
 #EPR
 
 
-# Set up libraries
-library(ggplot2)
 library(dplyr)
-#Set up global variables
+library(ggplot2)
 
-nName<- c("Ambient","Drought") #Names of treatments
-nSize <- c(30,30)
-nMean <- c(0.103697, 0.03247)
-nSD <-c(0.1565, 0.00656)
-
+nName<-c("Names","places")
+nSize<-c(15,27)
+nMean<-c(2,55)
+nSD<-c(3,33)
 ############################################################
 FakeDataGeneration<-function(Names=nName,Size=nSize,Mean=nMean,SD=nSD){
 
@@ -40,13 +37,21 @@ AnoStats<-function(Data=FakeDataGeneration()){
   
   ANOsum<-list(AverageofTreatments=aggregate(Value~Treatment, data=Data, FUN=mean),Fval=unlist(z)[7],probF=unlist(z)[9])
   
-  Plot<- ggplot(data=Data,
-                aes(x=Treatment, y=Value,fill=Treatment))+
-    geom_boxplot()
+ 
   
-  return(list(ANOsum,Plot))
+  return(ANOsum)
 
   
 }
 
 AnoStats()
+#############################################################################
+
+
+AnoPlot<-function(data){
+    Plot<- ggplot(data=data,
+                  aes(x=Treatment, y=Value,fill=Treatment))+
+      geom_boxplot()
+    return(Plot)
+}
+AnoPlot(data=FakeDataGeneration())

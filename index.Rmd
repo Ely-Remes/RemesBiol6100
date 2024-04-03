@@ -47,3 +47,6 @@ Assignment 6: [28_Feb_2024](Homework_07.html)
 Assignment 8: [28_Mar_2024](Homework_09.html)
 
     Generation of functions to create a random dataset when given a sample size, standard deviation, and mean with the ability to have variable treatments. 
+    
+    
+Assignment 9: [3_APR_2024](Homework_10.html)

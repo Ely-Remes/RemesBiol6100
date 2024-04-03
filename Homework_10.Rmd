@@ -1,0 +1,145 @@
+---
+title: "Homework_10"
+author: "Ely P. Remes"
+date: "2024-04-03"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Question 1
+
+
+Using a for loop, write a function to calculate the number of zeroes in a numeric vector. Before entering the loop, set up a counter variable counter <- 0. Inside the loop, add 1 to counter each time you have a zero in the vector. Finally, use return(counter) for the output.
+
+```{r}
+source("Homework_09Functions.R")
+x<- rep(1:10, times=25)
+
+rows<-5
+columns<-4
+
+zero_counter<-function(vec){
+
+  counter<-0
+  for (i in vec){
+    if (i == 0){
+      counter<- counter+1
+    }
+  }
+  
+  return(counter)
+}
+print(zero_counter(vec=x))
+```
+
+### Question 2
+
+
+Use subsetting instead of a loop to rewrite the function as a single line of code.
+```{r}
+SubsetOfZero<-function(vec){
+  return(sum(vec == 0))
+}
+print(SubsetOfZero(vec=x))  
+```
+
+### Quetion 3
+
+
+Write a function that takes as input two integers representing the number of rows and columns in a matrix. The output is a matrix of these dimensions in which each element is the product of the row number x the column number.
+```{r}
+EasyMatrix<-function(rows=x,columns=y){
+  
+  m<-matrix(nrow=rows,ncol=columns)
+  for(i in 1:nrow(m)) {
+    for(j in 1:ncol(m)) {
+     m[i,j]<- i*j
+    }
+  }
+  return(m)
+}
+EasyMatrix(rows=7,columns=3)
+```
+
+### Question 4A
+
+
+Now let’s practice calling custom functions within a for loops. Use the code from previous lectures on loops and functions to complete the following steps:
+
+Simulate a dataset with 3 groups of data, each group drawn from a distribution with a different mean. The final data frame should have 1 column for group and 1 column for the response variable
+
+```{r}
+
+
+nName= c("Potatoes","Carrots","Radishes")
+nSize= c(rep(20, times=3))
+nMean= c(17,25, 19)
+nSD= c(runif(3))
+
+VeggieWeight<-FakeDataGeneration()
+
+print(head(VeggieWeight))
+
+```
+
+### Question 4B
+
+
+Write a custom function that 1) reshuffles the response variable, and 2) calculates the mean of each group in the reshuffled data. Store the means in a vector of length 3.
+```{r}
+Randomizer<-function(x){
+  
+  
+CleanWeight<-mutate(x, Treatment,Value=round(Value, digits=1))
+NewWeight<-sample(CleanWeight$Value)
+  
+  
+  
+MixedWeight<-mutate(CleanWeight, Treatment, NewWeight)
+MixedWeight<-select(MixedWeight, Treatment, NewWeight)
+
+Answer<-group_by(MixedWeight, Treatment) %>% summarize(m = mean(NewWeight))
+return(unlist(Answer[,2]))
+}
+
+
+
+print(head(Randomizer(x=VeggieWeight)))
+```
+
+### Question 4C
+
+
+Use a for loop to repeat the function in b 100 times. Store the results in a data frame that has 1 column indicating the replicate number and 1 column for each new group mean, for a total of 4 columns.
+```{r}
+FrameWork<- data.frame(matrix(nrow=100,ncol=3))
+
+for (i in 1:nrow(FrameWork)) {
+  FrameWork[i,]<-Randomizer(x=VeggieWeight)
+}
+
+FrameWork<-mutate(FrameWork, ID=(1:100))
+FrameWork<-select(FrameWork, ID,Potatoes=X1,Carrots=X2,Radishes=X3)
+
+print(head(FrameWork))
+```
+
+### Question 4D
+
+
+Use qplot() to create a histogram of the means for each reshuffled group. Or, if you want a challenge, use ggplot() to overlay all 3 histograms in the same figure. How do the distributions of reshuffled means compare to the original means?
+
+```{r, echo=FALSE}
+
+print(hist(x=FrameWork$Carrots, col="darkorange",length.out=8,xlab="Carrot Mean Distribution" ))
+print(hist(x=FrameWork$Potatoes,
+     col="tan3",length.out=8,
+     xlab="Potato Mean Distribution"))
+print(hist(x=FrameWork$Radishes,
+     col="purple", length.out=8,
+    xlab="Radish Mean Distribution" ))
+
+```
