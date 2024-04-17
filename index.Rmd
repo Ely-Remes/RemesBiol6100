@@ -50,3 +50,15 @@ Assignment 8: [28_Mar_2024](Homework_09.html)
     
     
 Assignment 9: [3_APR_2024](Homework_10.html)
+
+    Using for loops to randomize a dataset along with functions.
+
+
+Assignment 10: [10_APR_2024](Homework_11.html) 
+
+    Practice using the barracudr packages to clean and analyze files from a larger dataset.
+    
+    
+Assignment 11:[17_APR_2024](Homework_12.html)
+
+    Building plots using our own or preloaded dataset within the ggplot language. 

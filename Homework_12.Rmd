@@ -1,0 +1,74 @@
+---
+title: "Homework12"
+author: "Ely P. Remes"
+date: "2024-04-17"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+```{r, message=FALSE}
+
+library(ggthemes)
+library(patchwork)
+library(cowplot)
+library(colorspace)
+library(wesanderson)
+library(ggsci)
+library(ggridges)
+library(colorblindr)
+library(scales)
+library(ggplot2)
+library(viridis)
+
+```
+
+## Plotting using ggplot2
+
+Attached are three different graphs made using ggplot2 based off of the iris dataset. 
+
+
+## Plot 1
+```{r}
+#Load Libraries
+
+d <- iris
+my_cols<- c("goldenrod", "darkslategray4", "darkolivegreen")
+p1 <- ggplot(d, aes(x = Petal.Length, y = Petal.Width, shape = Species, color = Species)) +
+  geom_point(size = 4, alpha=0.5) + 
+  labs(title="Correlation between petal length and width between species")+
+  xlab("Petal length")+
+  ylab("Petal width") +
+  scale_color_manual(values = my_cols)
+print(p1)
+
+```
+
+
+## Plot 2
+```{r}
+p2<- ggplot(d) +
+  aes(x=Sepal.Width, fill=Species)+
+  labs(title="Average Sepal Widths between different species")+
+  xlab("Sepal width")+
+  ylab("Species") +
+  scale_fill_manual(values= my_cols) +
+  geom_boxplot()
+plot(p2)
+
+```
+
+## Plot 3
+```{r}
+
+p3<-ggplot(d)+
+  aes(x = Sepal.Length, y = Species, fill = ..x..) +
+  geom_density_ridges_gradient(scale = 3, rel_min_height = 0.01) +
+  scale_fill_viridis(option = "C", name = "Relative Length") +
+  xlab("Sepal Length")+
+  ylab("Species")+
+  labs(title="Ridgeline of relative sepal length between species")
+
+plot(p3)
+```
